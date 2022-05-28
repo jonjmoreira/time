@@ -4,6 +4,10 @@ class Pages {
     this._yCnv = _yCnv;
   }
 
+  drawPage0() {
+    background( 0 );
+  }
+
   drawPage1() {
     background( 0 );
     fill( 255 );
@@ -140,7 +144,6 @@ function setup() {
   canvas = createCanvas( xCnv, yCnv );
   centerCanvas();
   frameRate( 20 );
-  background( 255 );
 
   textAlign(CENTER, CENTER);
   textFont('Courier New');
@@ -151,8 +154,7 @@ function setup() {
 var pages = new Pages( xCnv, yCnv );
 
 function draw() {
-  // Borders
-  background( 255 );
+  background( 0 );
   noLoop();
 
   pageDrawer();
@@ -166,7 +168,7 @@ function pageDrawer() {
   textSize(10);
   list = createSelect();
   list.position( xCnv * 1 / 10, yCnv * 1 / 10 );
-  list.option( '', 0 );
+  list.option( '-- Páginas', 0 );
   list.option( 'Inicio', 1 );
   list.option( 'Definição de Tempo', 2 );
   list.option( 'Definição de Espaço', 3 );
@@ -180,7 +182,7 @@ function pageSelector() {
   let choice = list.value();
   switch( choice ){
     case '0':
-      pages.drawPage1();
+      pages.drawPage0();
       break;
     case '1':
       pages.drawPage1();
@@ -201,7 +203,7 @@ function pageSelector() {
       pages.drawPage6();
         break;
     default:
-      pages.drawPage1();
+      pages.drawPage0();
   }
 }
 
